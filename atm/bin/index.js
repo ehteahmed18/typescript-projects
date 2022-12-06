@@ -11,9 +11,17 @@ const sleep = () => {
     });
 };
 async function welcome() {
-    let Title = (chalkAnimation.neon("====WELCOME TO XYZ BANK'S ATM MACHINE===="));
-    await sleep();
-    Title.stop();
+    // let Title = (chalkAnimation.neon("====WELCOME TO XYZ BANK'S ATM MACHINE===="));
+    // await sleep();
+    // Title.stop();
+    console.log(`
+
+    ███████╗██╗  ██╗████████╗███████╗███████╗██╗  ██╗ █████╗ ███╗   ███╗     █████╗ ████████╗███╗   ███╗    
+    ██╔════╝██║  ██║╚══██╔══╝██╔════╝██╔════╝██║  ██║██╔══██╗████╗ ████║    ██╔══██╗╚══██╔══╝████╗ ████║    
+    █████╗  ███████║   ██║   █████╗  ███████╗███████║███████║██╔████╔██║    ███████║   ██║   ██╔████╔██║    
+    ██╔══╝  ██╔══██║   ██║   ██╔══╝  ╚════██║██╔══██║██╔══██║██║╚██╔╝██║    ██╔══██║   ██║   ██║╚██╔╝██║    
+    ███████╗██║  ██║   ██║   ███████╗███████║██║  ██║██║  ██║██║ ╚═╝ ██║    ██║  ██║   ██║   ██║ ╚═╝ ██║    
+    ╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝    ╚═╝  ╚═╝   ╚═╝   ╚═╝     ╚═╝  `);
     var ask = await inquirer.prompt([
         {
             type: "string",
@@ -95,7 +103,7 @@ async function ATM() {
             }
         ]);
     } while (again.try === 'y' || again.try === 'Y');
-    let mes = (chalkAnimation.karaoke("\n          Thanks for using ATM machine!"));
+    let mes = (chalkAnimation.glitch("\n          Thanks for using ATM machine!"));
     await sleep();
     mes.stop();
 }
