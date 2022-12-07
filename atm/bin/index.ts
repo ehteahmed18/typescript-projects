@@ -47,8 +47,19 @@ async function welcome() {
 
 
 async function balance() {
-    console.log(chalk.yellowBright(`\n\n          XYZ BANK          \n--------------------------------\n     Balance Receipt\n-------------------------------- \n     Account holder name: ${name}\n--------------------------------\n     Available Balance: $${amount} \n`)
+    console.log(chalk.greenBright(`\nAvailable balance: $${amount}\n`));
+    var opt= await inquirer.prompt([
+        {
+            type: 'input',
+            name: 'balance',
+            message: 'Do you want receipt? (y/n): '
+        }
+    ]);
+    if (opt.balance === 'y' || opt.balance === 'Y') {
+        console.log(chalk.yellowBright(`\n\n          XYZ BANK          \n--------------------------------\n     Balance Receipt\n-------------------------------- \n     Account holder name: ${name}\n--------------------------------\n     Available Balance: $${amount} \n`)
     )
+    }
+    
 }
 async function withdraw() {
     var WDAmount = await inquirer.prompt([
@@ -58,20 +69,20 @@ async function withdraw() {
             message: 'Select a amount to withdraw: ',
             // choices: [1000,2500,5000,7500]
         },
-        {
-            type: 'input',
-            name: "receiptwd",
-            message: "Do you want receipt (y/n)? "
-        }
     ]);
     if (WDAmount.WDA <= amount) {
         amount = amount - WDAmount.WDA;
-        if (WDAmount.receiptwd === "y" || WDAmount.receiptwd === "Y") {
+        console.log(`\nAmount Withdrawn: $${WDAmount.WDA} \nAvailable Balance: $${amount}\n`);
+        var option = await inquirer.prompt([
+            {
+                    type: 'input',
+                    name: "receiptwd",
+                    message: "Do you want receipt (y/n)? "
+            }
+        ]);
+        if (option.receiptwd === "y" || option.receiptwd === "Y") {
             console.log(chalk.yellowBright(`\n\n          XYZ BANK          \n--------------------------------\n     With Drawal Receipt\n-------------------------------- \n     Account holder name: ${name}\n--------------------------------\n     Amount Withdraw: $${WDAmount.WDA}\n--------------------------------\n     Available Balance: $${amount} \n`)
             )
-        }
-        else {
-            console.log(`\nAmount Withdrawn: $${WDAmount.WDA} \nAvailable Balance: $${amount}\n`);
         }
     }
     else {
@@ -108,7 +119,7 @@ async function ATM() {
             }
         ]);
     } while (again.try === 'y' || again.try === 'Y');
-    let mes = (chalkAnimation.karaoke("\n          Thanks for using ATM machine!"));
+    let mes = (chalkAnimation.karaoke("\n       Thanks for using ATM machine!"));
     await sleep();
     mes.stop();
 

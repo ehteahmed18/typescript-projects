@@ -1,5 +1,7 @@
 #! /usr/bin/env node
 import inquirer from "inquirer";
+import chalk from "chalk";
+import chalkAnimation from "chalk-animation";
 
 
 
@@ -9,21 +11,31 @@ async function UserInput(){
         {
         type : "number",
         name : "user",
-        message: "Please enter a number from 0-10: \n"
+        message: chalk.bgGray("Please enter a number from 0-10:  ")
         }
     ]);
     if (ans.user === RanNum) {
-        console.log(`Number selected by computer: ${RanNum}`);
-        console.log(`\nNumber guessed by you: ${ans.user}`);
-        console.log("\nHurray!!! You won..")
+        console.log(chalk.yellowBright(`\nNumber selected by computer: ${RanNum}`));
+        console.log(chalk.yellowBright(`\nNumber guessed by you: ${ans.user}`));
+        console.log(chalk.redBright("\nHurray!!! You won..\n"));
     }
     else{
-        console.log(`Number selected by computer: ${RanNum}`);
-        console.log(`\nNumber guessed by you: ${ans.user}`);
-        console.log("\nAlas!! You lose.. Better luck next time")
+        console.log(chalk.yellowBright(`\nNumber selected by computer: ${RanNum}`));
+        console.log(chalk.yellowBright(`\nNumber guessed by you: ${ans.user}`));
+        console.log(chalk.redBright("\nAlas!! You lose.. Better luck next time\n"));
     }
 }
 async function DoAgain(){
+    console.log((chalk.blueBright`
+
+ ███╗   ██╗██╗   ██╗███╗   ███╗██████╗ ███████╗██████╗      ██████╗ ██╗   ██╗███████╗███████╗███████╗██╗███╗   ██╗ ██████╗      ██████╗  █████╗ ███╗   ███╗███████╗
+ ████╗  ██║██║   ██║████╗ ████║██╔══██╗██╔════╝██╔══██╗    ██╔════╝ ██║   ██║██╔════╝██╔════╝██╔════╝██║████╗  ██║██╔════╝     ██╔════╝ ██╔══██╗████╗ ████║██╔════╝
+ ██╔██╗ ██║██║   ██║██╔████╔██║██████╔╝█████╗  ██████╔╝    ██║  ███╗██║   ██║█████╗  ███████╗███████╗██║██╔██╗ ██║██║  ███╗    ██║  ███╗███████║██╔████╔██║█████╗  
+ ██║╚██╗██║██║   ██║██║╚██╔╝██║██╔══██╗██╔══╝  ██╔══██╗    ██║   ██║██║   ██║██╔══╝  ╚════██║╚════██║██║██║╚██╗██║██║   ██║    ██║   ██║██╔══██║██║╚██╔╝██║██╔══╝  
+ ██║ ╚████║╚██████╔╝██║ ╚═╝ ██║██████╔╝███████╗██║  ██║    ╚██████╔╝╚██████╔╝███████╗███████║███████║██║██║ ╚████║╚██████╔╝    ╚██████╔╝██║  ██║██║ ╚═╝ ██║███████╗
+ ╚═╝  ╚═══╝ ╚═════╝ ╚═╝     ╚═╝╚═════╝ ╚══════╝╚═╝  ╚═╝     ╚═════╝  ╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝╚═╝  ╚═══╝ ╚═════╝      ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝
+                                                                                                                                                               
+    `));
     do{
         await UserInput();
         var again = await inquirer.prompt([
@@ -32,7 +44,7 @@ async function DoAgain(){
                 name: "try",
                 message: "Do you waanna try again (y/n)? "
             }
-        ]);
+        ])
     }while(again.try === 'y'|| again.try === 'Y')
     
 }
