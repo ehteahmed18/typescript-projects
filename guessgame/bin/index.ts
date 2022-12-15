@@ -11,13 +11,13 @@ async function UserInput(){
         {
         type : "number",
         name : "user",
-        message: chalk.bgGray("Please enter a number from 0-10:  ")
+        message: chalk.cyanBright("\nPlease enter a number from 0-10:  ")
         }
     ]);
     if (ans.user === RanNum) {
         console.log(chalk.yellowBright(`\nNumber selected by computer: ${RanNum}`));
         console.log(chalk.yellowBright(`\nNumber guessed by you: ${ans.user}`));
-        console.log(chalk.redBright("\nHurray!!! You won..\n"));
+        console.log(chalk.greenBright("\nHurray!!! You won..\n"));
     }
     else{
         console.log(chalk.yellowBright(`\nNumber selected by computer: ${RanNum}`));
@@ -26,7 +26,7 @@ async function UserInput(){
     }
 }
 async function DoAgain(){
-    console.log((chalk.blueBright`
+    console.log(`
 
  ███╗   ██╗██╗   ██╗███╗   ███╗██████╗ ███████╗██████╗      ██████╗ ██╗   ██╗███████╗███████╗███████╗██╗███╗   ██╗ ██████╗      ██████╗  █████╗ ███╗   ███╗███████╗
  ████╗  ██║██║   ██║████╗ ████║██╔══██╗██╔════╝██╔══██╗    ██╔════╝ ██║   ██║██╔════╝██╔════╝██╔════╝██║████╗  ██║██╔════╝     ██╔════╝ ██╔══██╗████╗ ████║██╔════╝
@@ -35,7 +35,7 @@ async function DoAgain(){
  ██║ ╚████║╚██████╔╝██║ ╚═╝ ██║██████╔╝███████╗██║  ██║    ╚██████╔╝╚██████╔╝███████╗███████║███████║██║██║ ╚████║╚██████╔╝    ╚██████╔╝██║  ██║██║ ╚═╝ ██║███████╗
  ╚═╝  ╚═══╝ ╚═════╝ ╚═╝     ╚═╝╚═════╝ ╚══════╝╚═╝  ╚═╝     ╚═════╝  ╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝╚═╝  ╚═══╝ ╚═════╝      ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝
                                                                                                                                                                
-    `));
+    `);
     do{
         await UserInput();
         var again = await inquirer.prompt([
