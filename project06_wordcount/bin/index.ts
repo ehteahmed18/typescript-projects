@@ -2,6 +2,7 @@
 import inquirer from "inquirer";
 let totalWords = 0;
 
+
 async function count() {
     let result = await inquirer.prompt([
         {
@@ -20,7 +21,7 @@ async function count() {
     //For counting characters
     let totalCharacters = result.count.length;
     for (let i = 0; i < result.count.length; i++) {
-        if (!(result.count[i] != ' ')){
+        if (!(result.count[i] != ' ')) {
             totalCharacters = totalCharacters - 1;
         }
     }
@@ -33,4 +34,26 @@ async function count() {
     console.log(`\nTotal Characters (with whitespaces): ${result.count.length}`);
 }
 
-await count();
+async function Again() {
+    console.log(`
+    
+ ██╗    ██╗ ██████╗ ██████╗ ██████╗      ██████╗ ██████╗ ██╗   ██╗███╗   ██╗████████╗███████╗██████╗ 
+ ██║    ██║██╔═══██╗██╔══██╗██╔══██╗    ██╔════╝██╔═══██╗██║   ██║████╗  ██║╚══██╔══╝██╔════╝██╔══██╗
+ ██║ █╗ ██║██║   ██║██████╔╝██║  ██║    ██║     ██║   ██║██║   ██║██╔██╗ ██║   ██║   █████╗  ██████╔╝
+ ██║███╗██║██║   ██║██╔══██╗██║  ██║    ██║     ██║   ██║██║   ██║██║╚██╗██║   ██║   ██╔══╝  ██╔══██╗
+ ╚███╔███╔╝╚██████╔╝██║  ██║██████╔╝    ╚██████╗╚██████╔╝╚██████╔╝██║ ╚████║   ██║   ███████╗██║  ██║
+  ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═╝╚═════╝      ╚═════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚═╝  ╚═╝                                                                                                     
+        `)
+    do {
+        await count();
+        var doAgain = await inquirer.prompt([
+            {
+                type: 'text',
+                name: 'name',
+                message: "\nDo you want to count again? (y/n): "
+            }
+        ])
+    }while(doAgain.name === 'y'|| doAgain.name === 'Y')
+}
+
+await Again();

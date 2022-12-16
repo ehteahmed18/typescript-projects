@@ -31,4 +31,25 @@ async function count() {
     console.log(`\nTotal Characters (without whitespaces): ${totalCharacters}`);
     console.log(`\nTotal Characters (with whitespaces): ${result.count.length}`);
 }
-await count();
+async function Again() {
+    console.log(`
+    
+ ██╗    ██╗ ██████╗ ██████╗ ██████╗      ██████╗ ██████╗ ██╗   ██╗███╗   ██╗████████╗███████╗██████╗ 
+ ██║    ██║██╔═══██╗██╔══██╗██╔══██╗    ██╔════╝██╔═══██╗██║   ██║████╗  ██║╚══██╔══╝██╔════╝██╔══██╗
+ ██║ █╗ ██║██║   ██║██████╔╝██║  ██║    ██║     ██║   ██║██║   ██║██╔██╗ ██║   ██║   █████╗  ██████╔╝
+ ██║███╗██║██║   ██║██╔══██╗██║  ██║    ██║     ██║   ██║██║   ██║██║╚██╗██║   ██║   ██╔══╝  ██╔══██╗
+ ╚███╔███╔╝╚██████╔╝██║  ██║██████╔╝    ╚██████╗╚██████╔╝╚██████╔╝██║ ╚████║   ██║   ███████╗██║  ██║
+  ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═╝╚═════╝      ╚═════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚═╝  ╚═╝                                                                                                     
+        `);
+    do {
+        await count();
+        var doAgain = await inquirer.prompt([
+            {
+                type: 'text',
+                name: 'name',
+                message: "\nDo you want to count again? (y/n): "
+            }
+        ]);
+    } while (doAgain.name === 'y' || doAgain.name === 'Y');
+}
+await Again();
