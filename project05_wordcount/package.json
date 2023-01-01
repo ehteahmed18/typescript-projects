@@ -1,9 +1,12 @@
 {
-  "name": "project06_wordcount",
+  "name": "ehte_wordcount",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "type": "module",
+  "bin": {
+    "ehte+wordcount" : "bin/index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -1,9 +1,12 @@
 {
-  "name": "project05_currencyconverter",
-  "version": "1.0.0",
+  "name": "ehte_currencyconverter",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "type": "module",
+  "bin": {
+    "ehte_currencyconverter": "bin/index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,6 +19,7 @@
     "chalk": "^5.2.0",
     "chalk-animation": "^2.0.3",
     "currency-converter-lt2": "^2.0.0-beta.0",
+    "ehte_currencyconverter": "^1.0.1",
     "inquirer": "^9.1.4"
   },
   "devDependencies": {

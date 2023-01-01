@@ -1,3 +1,4 @@
+#! /usr/bin/env node
 import inquirer from "inquirer";
 let date_ob = new Date();
 let distance = true;
@@ -53,7 +54,7 @@ async function get() {
         {
             type: "list",
             name: "name",
-            message: "Select any one: ",
+            message: "\nSelect any one: ",
             choices: ["Current Time", "Current Date", "Timer"]
         }
     ]);
@@ -71,7 +72,7 @@ async function get() {
             {
                 type: "input",
                 name: "name",
-                message: "Please enter the timer you wanna set (e.g Dec 28, 2022 01:42:00) "
+                message: "Please enter the timer you wanna set (e.g Dec 28, 2022 15:42:00) "
             }
         ]);
         async function timer() {

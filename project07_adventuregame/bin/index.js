@@ -1,3 +1,4 @@
+#! /usr/bin/env node
 import inquirer from "inquirer";
 import chalk from "chalk";
 // class Welcome{
@@ -20,7 +21,7 @@ class Monster extends Human {
         super();
         this.Name = ["Zombie", "Creeper", "Monster"];
         this.monName = this.Name[Math.floor(Math.random() * this.Name.length)];
-        this.MonsterHealth = Math.floor(Math.random() * 100);
+        this.MonsterHealth = Math.floor(Math.random() * (90 - 30)) + 30;
         this.deadmonsters = 0;
     }
 }
@@ -30,18 +31,19 @@ class Main extends Monster {
     drinkportions;
     healthdrinkportions;
     totalScore;
+    rannumber;
     constructor() {
         super();
         this.totalScore = 0;
     }
     healthPortion() {
-        this.humanDamageHealth = Math.floor(Math.random() * (25 - 10) + 10);
+        this.humanDamageHealth = Math.floor(Math.random() * (25 - 10)) + 10;
         this.MonsterDamageHealth = Math.floor(Math.random() * (40 - 10)) + 10;
         this.Humanhealth = this.Humanhealth - this.humanDamageHealth;
         this.MonsterHealth = this.MonsterHealth - this.MonsterDamageHealth;
         console.log("-----------------------------------------------");
         console.log(chalk.cyan(`\nYou lost: ${this.humanDamageHealth}`));
-        console.log(chalk.cyan(`\n${this.monName} loses ${this.MonsterDamageHealth}`));
+        console.log(chalk.cyan(`\n${this.monName} loses: ${this.MonsterDamageHealth}`));
         console.log(chalk.cyan(`\nYour remaining health is ${this.Humanhealth}`));
         console.log(chalk.cyan(`\n${this.monName} remaining health is ${this.MonsterHealth}`));
         console.log("-----------------------------------------------");
@@ -53,8 +55,15 @@ class Main extends Monster {
             this.MonsterHealth = Math.floor(Math.random() * 100);
             console.log(chalk.blueBright(`\nNew ${this.monName} arrived and its HP is ${this.MonsterHealth}`));
             console.log("-----------------------------------------------");
+            this.rannumber = Math.floor(Math.random() * (5 - 0)) + 0;
+            if (this.rannumber === 3) {
+                console.log(chalk.greenBright(`\n${this.monName} left a health portion`));
+                this.drinkPortion = this.drinkPortion + 1;
+                console.log(chalk.greenBright(`\nYou have now ${this.drinkPortion} health portions left`));
+                console.log("-----------------------------------------------");
+            }
         }
-        else if (this.MonsterHealth <= 0 || this.Humanhealth < 0) {
+        else if (this.MonsterHealth <= 0 || this.Humanhealth <= 0) {
             console.log(chalk.redBright(`\n\nGAME OVER!! YOU DIED\n\n`));
             console.log(chalk.blueBright(`You killed ${this.deadmonsters} monsters. `));
             console.log(chalk.blueBright(`Your Score: ${this.totalScore}\n`));
@@ -67,6 +76,7 @@ class Main extends Monster {
             this.Humanhealth = this.drinkportions + 30;
             console.log("-----------------------------------------------");
             console.log(chalk.blueBright(`\nYour health has increased to ${this.Humanhealth}\n`));
+            console.log(chalk.blueBright(`\nYou have now ${this.drinkPortion} health portions left.`));
             console.log("-----------------------------------------------");
         }
         else {
@@ -83,16 +93,7 @@ class Main extends Monster {
         console.log("-----------------------------------------------");
     }
 }
-// class NewMonster extends attackHP {
-//     constructor() {
-//         super()
-//         this.MonsterHealth = Math.floor(Math.random() * 100)
-//         this.monName = this.Name[Math.floor(Math.random() * this.Name.length)]
-//     }
-// }
 const attack = new Main();
-// const drink = new DrinkHP();
-// const newMonster = new NewMonster();
 async function welcome() {
     console.log("-----------------------------------------------");
     console.log(chalk.yellowBright("          Welcome to adventure game"));

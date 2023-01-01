@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 import inquirer from "inquirer"; 
 let date_ob = new Date();
 let distance = true;
@@ -59,7 +61,7 @@ let result = await inquirer.prompt([
     {
         type: "list",
         name: "name",
-        message: "Select any one: ",
+        message: "\nSelect any one: ",
         choices: ["Current Time", "Current Date", "Timer"]
     }
 ])

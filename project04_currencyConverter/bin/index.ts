@@ -13,7 +13,7 @@ async function convert(){
         {
             type: 'input',
             name: 'tcurrency',
-            message: "Enter currency code in which you want to convert"
+            message: "Enter currency code in which you want to convert: "
         },
         {
             type: 'number',

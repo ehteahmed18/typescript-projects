@@ -1,9 +1,12 @@
 {
-  "name": "project07_adventuregame",
+  "name": "ehte_adventuregames",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "type": "module",
+  "bin": {
+    "ehte_adventuregames" : "bin/index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
