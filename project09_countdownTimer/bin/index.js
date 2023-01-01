@@ -80,18 +80,4 @@ async function get() {
         await timer();
     }
 }
-// async function DoAgain() {
-//     do {
-//         await get();
-//         var again = await inquirer
-//         .prompt([
-//             {
-//                 type: "input",
-//                 name: 'asking',
-//                 message: "Do you want to Calculate Again (y/n): ",
-//             }
-//         ])
-//     } while (again.asking === "y" || again.asking === "Y" || again.asking === "yes" || again.asking === "YES")
-// }
-// DoAgain()
 await get();

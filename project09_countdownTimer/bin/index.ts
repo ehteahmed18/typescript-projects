@@ -78,7 +78,7 @@ else if (result.name === "Timer"){
         {
             type: "input",
             name: "name",
-            message: "Please enter the timer you wanna set (e.g Dec 28, 2022 01:42:00) "
+            message: "Please enter the timer you wanna set (e.g Dec 28, 2022 15:42:00) "
         }
     ])
     async function timer(){
@@ -88,18 +88,4 @@ else if (result.name === "Timer"){
 }
 }
 
-// async function DoAgain() {
-//     do {
-//         await get();
-//         var again = await inquirer
-//         .prompt([
-//             {
-//                 type: "input",
-//                 name: 'asking',
-//                 message: "Do you want to Calculate Again (y/n): ",
-//             }
-//         ])
-//     } while (again.asking === "y" || again.asking === "Y" || again.asking === "yes" || again.asking === "YES")
-// }
-// DoAgain()
 await get()
