@@ -1,9 +1,12 @@
 {
-  "name": "project10_oop",
+  "name": "ehte_project10_oop",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "type": "module",
+  "bin": {
+    "ehte_project10_oop" : "bin/index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
